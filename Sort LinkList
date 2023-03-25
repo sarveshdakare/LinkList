@@ -1,0 +1,64 @@
+
+
+#include <iostream>
+
+using namespace std;
+
+class Node{
+    public:
+    int data;
+    Node* next;
+    
+    Node(int data){
+        this->data=data;
+        this->next=NULL;
+    }
+};
+
+void insertATtail(Node* &head,int d){
+    Node* temp=new Node(d);
+   temp->next=head;
+  head=temp;
+}
+void removeduplicate(Node* &head){
+ 
+}
+void print(Node* &head){
+    Node* temp=head;
+    while(temp!=NULL){
+        cout<<temp->data<<" ";
+        temp=temp->next;
+    }
+}
+
+void sort(Node* &head){
+    Node* i,*j;
+    for(i=head;i->next!=NULL;i=i->next){
+        for(j=i->next;j!=NULL;j=j->next){
+            if(i->data>j->data){
+                int temp=i->data;
+                i->data=j->data;
+                j->data=temp;
+            }
+        }
+    }
+}
+int main()
+{
+   Node* node1=new Node(12);
+
+Node* head=node1;
+insertATtail(head,11);
+
+insertATtail(head,12);
+insertATtail(head,10);
+insertATtail(head,9);
+print(head);
+cout<<endl;
+;
+
+sort(head);
+cout<<"After Sorting: "<<endl;
+print(head);
+    return 0;
+}
