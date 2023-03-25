@@ -1,0 +1,69 @@
+/******************************************************************************
+
+                              Online C++ Compiler.
+               Code, Compile, Run and Debug C++ program online.
+Write your code in this editor and press "Run" button to compile and execute it.
+
+*******************************************************************************/
+
+#include <iostream>
+
+using namespace std;
+
+class Node{
+    public:
+    int data;
+    Node *next;
+    
+    Node(int data){
+        this->data=data;
+        this->next=NULL;
+    }
+};
+
+void insertAThead(Node* &head,int d){
+    Node* temp=new Node(d);
+    temp->next=head;
+    head=temp;
+}
+
+
+void print(Node* &head){
+    Node* temp=head;
+    while(temp!=NULL){
+        cout<<temp->data<<" ";
+        temp=temp->next;
+    }
+}
+
+Node* reverseLinklist(Node* &head){
+    Node* prev=NULL;
+    Node* curr=head;
+    Node* forward;
+    while(curr!=NULL){
+        forward=curr->next;
+        curr->next=prev;
+        prev=curr;
+        curr=forward;
+    }
+    return prev;
+}
+int main()
+{
+    
+Node* node1=new Node(10);
+Node* head=node1;
+
+
+insertAThead(head,11);
+insertAThead(head,12);
+insertAThead(head,13);
+
+cout<<"LINKLIST IS: "<<endl;
+print(head);
+cout<<endl;
+head=reverseLinklist(head);
+cout<<"REVERSE LINKLIST IS: "<<endl;
+print(head);
+    return 0;
+}
