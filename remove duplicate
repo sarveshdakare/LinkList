@@ -1,0 +1,58 @@
+
+
+#include <iostream>
+
+using namespace std;
+
+class Node{
+    public:
+    int data;
+    Node* next;
+    
+    Node(int data){
+        this->data=data;
+        this->next=NULL;
+    }
+};
+
+void insertATtail(Node* &head,int d){
+    Node* temp=new Node(d);
+   temp->next=head;
+  head=temp;
+}
+void removeduplicate(Node* &head){
+    Node* temp=head;
+    if(temp->data=temp->next->data){
+        Node* nextTonnext=temp->next->next;
+        Node* ToDelete=temp->next;
+        delete ToDelete;
+        temp->next=nextTonnext;
+        
+    }else{
+        temp=temp->next;
+    }
+}
+void print(Node* &head){
+    Node* temp=head;
+    while(temp!=NULL){
+        cout<<temp->data<<" ";
+        temp=temp->next;
+    }
+}
+
+int main()
+{
+   Node* node1=new Node(10);
+
+Node* head=node1;
+insertATtail(head,11);
+
+insertATtail(head,12);
+insertATtail(head,12);
+print(head);
+cout<<endl;
+cout<<"After removing duplicate: "<<endl;
+removeduplicate(head);
+print(head);
+    return 0;
+}
