@@ -1,0 +1,68 @@
+
+#include <iostream>
+
+using namespace std;
+
+class Node{
+    public:
+    int data;
+    Node *next;
+    
+    Node(int data){
+        this->data=data;
+        this->next=NULL;
+    }
+};
+
+void insertAThead(Node* &head,int d){
+    Node* temp=new Node(d);
+    temp->next=head;
+    head=temp;
+}
+
+
+void print(Node* &head){
+    Node* temp=head;
+    while(temp!=NULL){
+        cout<<temp->data<<" ";
+        temp=temp->next;
+    }
+}
+void findmiddle(Node* head){
+    int len=0,cnt=0;
+    Node* temp=head;
+    while(temp!=NULL){
+        temp=temp->next;
+                len++;
+
+    }
+    cout<<len<<endl;
+ 
+     int mid=len/2;
+   while(cnt<mid){
+            head=head->next;
+            cnt++;
+        }
+        int d=head->data;
+      cout<<d<<endl;
+   
+}
+
+int main()
+{
+    
+Node* node1=new Node(10);
+Node* head=node1;
+
+
+insertAThead(head,11);
+insertAThead(head,12);
+insertAThead(head,13);
+insertAThead(head,14);
+
+cout<<"LINKLIST IS: "<<endl;
+print(head);
+cout<<endl;
+findmiddle(head);
+    return 0;
+}
